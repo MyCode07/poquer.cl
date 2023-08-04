@@ -1,0 +1,130 @@
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    scroll-behavior: smooth;
+    line-height: 1.2;
+    color: #424242;
+    font-family: Montserrat;
+    font-style: normal;
+    font-size: 16px;
+    background-color: #fff;
+
+    &._noscroll {
+        overflow: hidden;
+    }
+
+    &::-webkit-scrollbar {
+    }
+
+    &::-webkit-scrollbar-thumb {
+    }
+}
+
+.wrapper {
+    min-height: 100%;
+    scroll-behavior: smooth;
+    overflow-x: clip;
+
+    display: flex;
+    flex-direction: column;
+}
+
+main {
+    flex: 1 1 auto;
+}
+
+._container {
+    width: 100%;
+    margin-inline: auto;
+    max-width: $containerSmall + px;
+
+    @media (max-width: $containerSmallWithPadding + px) {
+        max-width: none;
+        padding-inline: $padding + px;
+    }
+}
+
+section {
+    margin-bottom: 120px;
+
+    @media (max-width: 768px) {
+        margin-bottom: 100px;
+    }
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    letter-spacing: -0.04em;
+    font-family: Inter Hewn;
+    text-transform: uppercase;
+}
+
+._inter {
+    font-family: Inter Hewn;
+    letter-spacing: -0.06em;
+}
+
+._namu-pro {
+}
+
+h1 {
+    @include adaptive-value("font-size", 48, 28, 1);
+}
+
+h2 {
+    @include adaptive-value("font-size", 36, 20, 1);
+}
+
+h3,
+h4,
+h5,
+h6 {
+    font-size: 20px;
+}
+
+p {
+}
+
+a {
+    color: inherit;
+}
+
+._italic {
+    font-style: italic;
+}
+
+img + p._italic {
+    margin-top: 10px;
+}
+
+.slider-buttons {
+    button {
+        img,
+        svg {
+        }
+    }
+}
+
+figure,
+img,
+svg {
+    display: block;
+    width: 100%;
+    max-width: 100%;
+}
+
+._btn {
+}
+
+._more {
+}
+
+._gradient {
+    background: var(--linear, linear-gradient(134deg, #689bff 0%, #2871ff 98.16%));
+}
