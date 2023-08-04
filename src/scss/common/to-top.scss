@@ -22,6 +22,8 @@
     }
 
     img {
-        @include adaptive-value("height", 25, 20, 1);
+        @include adaptive-value("height", 15, 10, 1);
+        position: relative;
+        top: -2px;
     }
 }

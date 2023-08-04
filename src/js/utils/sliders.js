@@ -12,7 +12,7 @@ if (slidersDrag) {
             new Swiper(slider, {
                 slidesPerView: 'auto',
                 grabCursor: true,
-                spaceBetween: 30
+                spaceBetween: 20
             })
         }
     });

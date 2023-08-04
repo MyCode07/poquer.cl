@@ -9,6 +9,7 @@ body {
     font-family: Montserrat;
     font-style: normal;
     font-size: 16px;
+    font-weight: 500;
     background-color: #fff;
 
     &._noscroll {
@@ -43,6 +44,19 @@ main {
     @media (max-width: $containerSmallWithPadding + px) {
         max-width: none;
         padding-inline: $padding + px;
+    }
+
+    // ._container-big
+
+    &-big {
+        width: 100%;
+        max-width: $container + px;
+        margin-inline: auto;
+
+        @media (max-width: $containerWithPadding + px) {
+            max-width: none;
+            padding-inline: $padding + px;
+        }
     }
 }
 
@@ -120,11 +134,41 @@ svg {
 }
 
 ._btn {
+    width: 100%;
+    max-width: 300px;
+    margin-inline: auto;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: #fff;
+    font-family: Inter Hewn;
+    border-radius: 18px;
 }
 
 ._more {
+    display: flex;
+    align-items: center;
+    text-decoration: underline;
+    margin-inline: auto;
+    width: fit-content;
+
+    &:not(:last-child) {
+        margin-bottom: 30px;
+    }
+
+    &:after {
+        content: "";
+        background-image: url("@img/icons/arrow.svg");
+        width: 1em;
+        height: 0.5em;
+        margin-left: 0.5em;
+        background-repeat: no-repeat;
+        background-size: contain;
+    }
 }
 
 ._gradient {
-    background: var(--linear, linear-gradient(134deg, #689bff 0%, #2871ff 98.16%));
+    background: linear-gradient(134deg, #689bff 0%, #2871ff 98.16%);
 }

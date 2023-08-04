@@ -2,7 +2,7 @@
     // .bookmakers__grid
 
     &__grid {
-        @include adaptive-value("margin-top", 50, 25, 1);
+        margin-top: 30px;
 
         display: flex;
         justify-content: center;
@@ -23,159 +23,157 @@
 }
 
 .bookmaker-small {
-    width: 270px;
-    background: #fff;
-    box-shadow: 0px 0px 42px 0px rgba(0, 0, 0, 0.06);
-    padding: 8px;
-    display: flex;
+    position: relative;
+    background-color: #fff;
+    padding: 4px;
+    border-radius: 22px;
+
+    width: calc(50% - 10px);
 
     @media (max-width: 600px) {
         width: 100%;
     }
 
-    // .bookmaker-small__image
+    &:before {
+        position: absolute;
+        content: "";
+        inset: -1px;
+        background: linear-gradient(134deg, #689bff 0%, #2871ff 98.16%);
+        border-radius: 23px;
+        z-index: -1;
+    }
 
-    &__image {
-        width: 67px;
-        height: 67px;
-        flex: 0 0 auto;
+    // .bookmaker-small__body
 
+    &__body {
         display: flex;
         align-items: center;
         justify-content: center;
+        border: 1px solid #ebebeb;
+        border-radius: 20px;
+        overflow: hidden;
 
         padding: 7px;
-        background-color: #f4f4f4;
-        margin-right: 10px;
 
-        img {
-            margin-bottom: 0 !important;
+        & > :not(:last-child) {
+            margin-right: 17px;
         }
     }
 
-    // .bookmaker-small__content
+    // .bookmaker-small__left
 
-    &__content {
-        h3 {
-            color: #4f4f4f;
-            font-family: Namu1960;
-            font-size: 16px;
+    &__left {
+        width: 98px;
+    }
 
-            img {
-                width: 100%;
-                max-width: 90px;
-                margin-left: 10px;
-            }
+    // .bookmaker-small__image
 
-            display: flex;
-            align-items: center;
+    &__image {
+        display: block;
+
+        img {
+            display: block;
         }
+    }
 
-        p {
-            color: #a3a3a3;
-            margin-top: 5px;
-            font-size: 14px;
-        }
+    // .bookmaker-small__right
+
+    &__right {
+        width: 98px;
+        font-size: 14px;
+        text-align: left;
 
         span {
-            color: #06f;
-            font-size: 14px;
+            display: inline !important;
+        }
+
+        label {
+            display: inline !important;
+            color: #a8a8a8;
         }
     }
 }
 
-.slides {
-    // .slides__flex
+.slides__flex {
+    margin-top: 40px;
 
-    &__flex {
-        @include adaptive-value("margin-top", 50, 25, 1);
-        display: grid;
-        grid-template-columns: repeat(4, 1fr);
-        gap: 30px 20px;
+    @media (max-width: 768px) {
+        margin-top: 30px;
+    }
 
-        @media (max-width: 1024px) {
-            grid-template-columns: repeat(2, 1fr);
+    // .slides__flex-item
+
+    &-item {
+        // .slides__flex-item-body
+
+        &-body {
+            border: 1px solid #ebebeb;
+            padding: 8px;
+            border-radius: 20px;
         }
 
-        @media (max-width: 600px) {
-            display: block;
-            gap: 0;
+        // .slides__flex-item-title
 
-            & > :not(:last-child) {
-                margin-bottom: 10px;
+        &-title {
+            margin-bottom: 15px;
+        }
+
+        p {
+            margin-bottom: 20px;
+            padding: 0 12px;
+        }
+
+        // .slides__flex-item-img
+
+        &-img {
+            margin-top: 10px;
+
+            img {
+                border-radius: 30px;
             }
         }
 
-        // .slides__flex-item
+        ._more {
+            margin-bottom: 20px;
+        }
+    }
 
-        &-item {
-            background-color: #fff;
-            box-shadow: 0px 0px 42px 0px rgba(0, 0, 0, 0.06);
-            padding: 15px 20px 20px 20px;
-            width: 100%;
+    // .slides__flex-swiper
 
-            p {
-                &:first-of-type {
-                    padding-top: 20px;
-                    margin-top: 20px;
-                    border-top: 1px solid #dbdbdb;
-                }
+    &-swiper {
+        width: 100vw;
+        max-width: $container + px;
+        position: relative;
+        transform: translate(-50%, 0);
+        left: 50%;
 
-                &:not(:first-of-type) {
-                    margin-top: 15px;
-                }
-            }
+        @media (max-width: $containerWithPadding + px) {
+            padding-inline: $padding + px;
         }
 
-        // .slides__flex-swiper
+        .swiper {
+            margin-top: 50px;
+            overflow: visible;
 
-        &-swiper {
-            .swiper {
-                margin-top: 50px;
-                overflow: visible;
-
-                &::-webkit-scrollbar {
-                    display: none;
-                }
-
-                .swiper-slide {
-                    width: auto;
-                }
-
-                .slides__flex-item {
-                    width: 270px;
-                    flex: 0 0 auto;
-                }
+            &::-webkit-scrollbar {
+                display: none;
             }
 
-            &._noshaddow {
-                .slides__flex-item {
-                    padding: 0;
-                    box-shadow: none;
-                    background-color: transparent;
-                }
+            .swiper-slide {
+                width: auto;
+            }
+
+            .slides__flex-item {
+                width: 270px;
+                flex: 0 0 auto;
             }
         }
 
         &._noshaddow {
             .slides__flex-item {
-                p {
-                    padding-top: 0;
-                    border-top: 0;
-                }
-
-                figure {
-                    height: 60px;
-
-                    display: flex;
-                    align-items: center;
-                }
-
-                img {
-                    @media (max-width: 768px) {
-                        margin-left: 0;
-                    }
-                }
+                padding: 0;
+                box-shadow: none;
+                background-color: transparent;
             }
         }
     }
@@ -187,98 +185,45 @@
     .slides__flex-item {
         counter-increment: count;
 
-        &:before {
-            content: counter(count);
+        // .slides__flex-item-title
 
-            border: 1px solid #ccc;
-            margin-bottom: 13px;
-
-            color: #06f;
-            font-size: 30px;
-            display: block;
-            width: 50px;
-            height: 50px;
+        &-title {
+            height: 59px;
             display: flex;
             align-items: center;
-            justify-content: center;
-            text-align: center;
-        }
-    }
-}
+            border: 1px solid #dbdbdb;
+            border-radius: 20px;
+            overflow: hidden;
 
-._noshaddow {
-    .slides__flex-item,
-    article {
-        padding: 0;
-        box-shadow: none;
-        background-color: transparent;
-    }
-}
+            &:before {
+                content: counter(count);
+                border: 1px solid #dbdbdb;
+                border-radius: 20px;
 
-._simple,
-.grid-wrap {
-    &._noshaddow {
-        @media (max-width: 600px) {
-            & > :not(:last-child) {
-                margin-bottom: 30px;
+                margin-right: 16px;
+                position: relative;
+                left: -1px;
+
+                width: 59px;
+                height: 59px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                flex: 0 0 auto;
+
+                text-align: center;
+                font-size: 28px;
+                font-family: Inter Hewn;
+                background: linear-gradient(134deg, #689bff 0%, #2871ff 98.16%);
+                -webkit-background-clip: text;
+                -webkit-text-fill-color: transparent;
             }
         }
     }
 }
 
-.bookmaker-card {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    background: #fff;
-    box-shadow: 0px 0px 42px 0px rgba(0, 0, 0, 0.06);
-    width: 100%;
-    padding: 18px 10px 10px 10px;
-
-    // .bookmaker-card__image
-
-    &__image {
-        img {
-            width: 133px;
-        }
-    }
-
-    ._btn {
-        margin-top: 30px;
-        width: 100%;
-        max-width: none;
-    }
-}
-
-.rating,
-.bonus {
-    span,
-    label {
-        text-align: center;
-        font-family: NamuPro;
-        letter-spacing: -0.06em;
-        display: block;
-    }
-
-    span {
-        font-size: 20px;
-        margin-bottom: 10px;
-    }
-
-    label {
-        font-size: 30px;
-    }
-}
-
 .rating {
-    margin-top: 10px;
-    margin-bottom: 20px;
-}
-
-.bonus {
-    span {
-        margin-bottom: 0;
-    }
+    margin-top: 7px;
 }
 
 .bookmaker-line {
