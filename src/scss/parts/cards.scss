@@ -311,6 +311,8 @@
     // .bookmaker-line__image
 
     &__image {
+        display: block;
+        
         img {
             @media (min-width: 1025px) {
                 @include adaptive-value("width", 211, 136, 1);
