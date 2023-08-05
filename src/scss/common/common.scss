@@ -189,14 +189,10 @@ svg {
             background-color: #fff;
             border-radius: 18px;
             z-index: -1;
-            width: calc(100% - 1px);
+            width: calc(100% - 2px);
             height: calc(100% - 2px);
             left: 1px;
             top: 1px;
-
-            @media (any-hover: none) {
-                width: calc(100% - 2px);
-            }
         }
     }
 }
