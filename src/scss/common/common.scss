@@ -45,11 +45,21 @@ main {
     }
 
     & > .wp-block-columns {
-        &:nth-child(2) {
+        &:first-child {
             margin-top: 60px;
 
             @media (max-width: 768px) {
                 margin-top: 10px;
+            }
+        }
+    }
+
+    & > .bookmaker {
+        &:first-child {
+            margin-top: 0;
+
+            @media (max-width: 768px) {
+                margin-top: 0;
             }
         }
     }
@@ -118,7 +128,7 @@ h3,
 h4,
 h5,
 h6 {
-    font-size: 20px;
+    @include adaptive-value("font-size", 20, 16, 1);
 }
 
 p {
