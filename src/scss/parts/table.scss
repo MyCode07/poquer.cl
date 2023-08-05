@@ -4,21 +4,42 @@ table {
     border: 0 !important;
     width: 100%;
 
-    @media (max-width: 992px) {
-        padding-inline: 30px;
-        width: fit-content;
-        max-width: none;
+    thead {
+        th {
+            padding: 10px;
+            text-align: center;
+
+            border-left: 1px solid #ebebeb;
+            border-top: 1px solid #ebebeb;
+
+            border-bottom-left-radius: 0 !important;
+            border-bottom-right-radius: 0 !important;
+
+            &:last-child {
+                border-right: 1px solid #ebebeb;
+            }
+
+            @media (max-width: 768px) {
+                min-width: 82px;
+            }
+        }
     }
 
     tr {
-        @media (max-width: 768px) {
-            min-width: 120px;
+        &:last-child {
+            & > :first-child {
+                border-bottom-left-radius: 20px;
+            }
+
+            & > :last-child {
+                border-bottom-right-radius: 20px;
+            }
         }
     }
 
     td {
-        border: 1px solid #cccccc !important;
-
+        border: 1px solid #ebebeb !important;
+        vertical-align: middle;
         padding: 10px !important;
 
         @media (max-width: 768px) {
@@ -27,11 +48,18 @@ table {
         }
 
         img {
+            display: inline !important;
+            margin: 0 3px !important;
         }
 
         overflow-wrap: normal !important;
         word-break: normal !important;
-        min-width: 74px;
+        min-width: 82px;
+
+        &:not(:has(strong)) {
+            font-size: 14px;
+            font-weight: 400;
+        }
     }
 
     tbody {
@@ -51,8 +79,34 @@ table {
 
 .wp-block-table {
     overflow-x: unset !important;
+    display: flex;
+    flex-direction: column-reverse;
 
-    &:not(._center) {
+    border-radius: 20px;
+    text-align: left;
+    margin-top: 30px;
+
+    figcaption {
+        border: 1px solid #ebebeb;
+        width: 100%;
+        text-align: center;
+        border-bottom: 0;
+        border-radius: 20px 20px 0 0;
+
+        font-family: Inter Hewn;
+        font-size: 18px !important;
+        font-style: normal !important;
+        text-transform: uppercase;
+
+        -webkit-background-clip: text !important;
+        background: linear-gradient(134deg, #689bff 0%, #2871ff 98.16%);
+        -webkit-text-fill-color: transparent;
+
+        padding: 15px;
+        margin: 0 !important;
+    }
+
+    &._scroll {
         @media (max-width: 992px) {
             overflow-x: auto !important;
             width: 100vw;
@@ -61,6 +115,17 @@ table {
 
             &::-webkit-scrollbar {
                 display: none;
+            }
+
+            figcaption {
+                margin: 0 30px !important;
+                max-width: none;
+            }
+
+            table {
+                padding-inline: 30px;
+                width: fit-content;
+                max-width: none;
             }
         }
     }
@@ -77,6 +142,35 @@ table {
         table {
             padding: 0 !important;
             width: 100% !important;
+        }
+    }
+
+    &._numeric {
+        counter-reset: count;
+
+        tr {
+            counter-increment: count;
+
+            & > :first-child {
+                position: relative;
+
+                padding-left: calc(1.9em + 10px) !important;
+
+                &:before {
+                    content: counter(count);
+                    border-right: 1px solid #ebebeb;
+                    position: absolute;
+                    left: 0;
+                    top: 0;
+                    width: 1.9em;
+                    height: 100%;
+                    font-weight: 600;
+
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                }
+            }
         }
     }
 }

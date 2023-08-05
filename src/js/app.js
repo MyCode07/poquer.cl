@@ -4,6 +4,7 @@ import './utils/to-top.js';
 import './utils/replace.js';
 import './utils/inputmask.js';
 import './utils/accordeon.js';
+import './utils/table.js';
 
 // import './utils/animations.js';
 // import './utils/smoothscrol.js';

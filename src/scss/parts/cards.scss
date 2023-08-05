@@ -152,8 +152,12 @@
         }
 
         .swiper {
-            margin-top: 50px;
+            margin-top: 40px;
             overflow: visible;
+
+            @media (max-width: 768px) {
+                margin-top: 30px;
+            }
 
             &::-webkit-scrollbar {
                 display: none;
@@ -161,19 +165,30 @@
 
             .swiper-slide {
                 width: auto;
+
+                .slides__flex-item,
+                article {
+                    width: 300px;
+                    flex: 0 0 auto;
+
+                    @media (max-width: 600px) {
+                        width: 280px;
+                    }
+                }
             }
 
-            .slides__flex-item {
-                width: 270px;
-                flex: 0 0 auto;
+            + ._btn {
+                margin-top: 25px;
             }
         }
 
-        &._noshaddow {
-            .slides__flex-item {
-                padding: 0;
-                box-shadow: none;
-                background-color: transparent;
+        &._small {
+            transform: translate(0, 0);
+            left: 0;
+            width: 100%;
+
+            h3 {
+                font-size: 16px !important;
             }
         }
     }
@@ -228,60 +243,119 @@
 
 .bookmaker-line {
     padding: 10px;
-    background: #fff;
-    box-shadow: 0px 0px 42px 0px rgba(0, 0, 0, 0.06);
-    display: flex;
-    justify-content: space-between;
+
+    position: relative;
+    padding: 5px;
+    border-radius: 24px;
+
+    background-color: #fff;
+
+    &:before {
+        position: absolute;
+        content: "";
+        inset: -1px;
+        background: linear-gradient(134deg, #689bff 0%, #2871ff 98.16%);
+        border-radius: 25px;
+        z-index: -1;
+    }
 
     @media (max-width: 600px) {
         display: block;
     }
 
+    // .bookmaker-line__body
+
+    &__body {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+
+        border: 1px solid #ebebeb;
+        border-radius: 20px;
+        overflow: hidden;
+
+        padding: 15px;
+
+        & > :not(:last-child) {
+            margin-right: 20px;
+        }
+
+        @media (max-width: 600px) {
+            display: block;
+            padding: 10px;
+
+            & > :not(:last-child) {
+                margin-right: 0;
+                margin-bottom: 17px;
+            }
+        }
+    }
+
     // .bookmaker-line__left
 
     &__left {
-        margin-right: 10px;
         display: flex;
+        align-items: center;
+        justify-content: space-between;
+        width: 40%;
 
         @media (max-width: 600px) {
-            margin-right: 0;
-            margin-bottom: 15px;
             width: 100%;
+        }
+
+        & > :not(:last-child) {
+            margin-right: 20px;
         }
     }
 
     // .bookmaker-line__image
 
     &__image {
-        margin-right: 20px;
-
         img {
-            width: 90px;
+            @media (min-width: 1025px) {
+                @include adaptive-value("width", 211, 136, 1);
+            }
+
+            @media (max-width: 1024px) {
+                width: 136px;
+            }
         }
     }
 
     .rating {
-        margin: 0;
+        margin-top: 0;
+
+        @media (min-width: 1025px) {
+            @include adaptive-value("width", 175, 98, 1);
+        }
+
+        @media (max-width: 1024px) {
+            width: 98px;
+        }
     }
 
     .bonus {
+        text-align: left;
+
+        @media (max-width: 600px) {
+            text-align: center;
+        }
+
         span {
-            text-align: left;
-            font-size: 18px;
+            display: inline !important;
         }
 
         label {
-            text-align: left;
-            color: #0066ff;
-            font-size: 26px;
+            display: inline !important;
+            color: #a8a8a8;
         }
     }
 
     ._btn {
-        max-width: 260px;
-        height: auto;
+        max-width: 280px;
         width: auto;
         flex: 1 1 auto;
+        margin: 0;
 
         @media (max-width: 600px) {
             width: 100%;
@@ -294,16 +368,16 @@
     width: 100%;
     display: flex;
     flex-direction: column;
-    padding: 10px 10px 22px 10px;
-    background: #fff;
-    box-shadow: 0px 0px 42px 0px rgba(0, 0, 0, 0.06);
+    border: 1px solid #dbdbdb;
+    border-radius: 30px;
+    padding: 10px;
 
     // .new-card__image
 
     &__image {
         position: relative;
         display: block;
-        padding-bottom: 82%;
+        padding-bottom: 64%;
         margin-bottom: 10px;
 
         img {
@@ -313,6 +387,7 @@
             left: 0;
             top: 0;
             object-fit: cover;
+            border-radius: 20px;
         }
     }
 
@@ -322,15 +397,12 @@
         display: flex;
         align-items: center;
         flex-wrap: wrap;
-
+        text-align: left;
         margin-bottom: 10px;
 
         time,
         span,
         a {
-            font-size: 18px;
-            display: block;
-
             display: flex;
             align-items: center;
         }
@@ -339,17 +411,20 @@
             &:before {
                 content: "";
                 display: block;
-                width: 3px;
-                height: 3px;
+                width: 1px;
+                height: 1em;
                 flex: 0 0 auto;
                 border-radius: 50%;
                 background-color: #d9d9d9;
-                margin: 0 10px;
+                margin: 0 12px;
             }
         }
     }
+
     h3 {
-        font-size: 18px !important;
+        text-align: left;
+        font-weight: 600;
+        font-size: 16px !important;
         margin-bottom: 20px;
         flex: 1 1 auto;
     }
@@ -374,16 +449,18 @@ ul.page-numbers {
     justify-content: center;
 
     li {
-        width: 28px;
-        height: 28px;
-        color: #0066ff;
+        width: 30px;
+        height: 30px;
 
-        background-color: #fff;
+        background: #f4f4f4 !important;
         box-shadow: 0px 0px 42px 0px rgba(0, 0, 0, 0.06);
 
-        font-family: NamuPro;
-        letter-spacing: -0.06em;
         transition: all 0.3s ease 0s;
+        font-family: Inter Hewn;
+
+        &:before {
+            display: none;
+        }
 
         a,
         span {
@@ -396,25 +473,25 @@ ul.page-numbers {
             height: 100%;
         }
 
-        &:has(a) {
-            @media (any-hover: hover) {
-                &:hover {
-                    background-color: #cccccc;
-                }
-            }
+        a {
+            color: #fff;
         }
 
         &:has(.next),
         &:has(.prev) {
             width: auto;
+            background: linear-gradient(134deg, #689bff 0%, #2871ff 98.16%) !important;
 
             a {
-                padding: 0 10px;
+                padding: 0 8px;
             }
+        }
+
+        &:has(a) {
+            background: linear-gradient(134deg, #689bff 0%, #2871ff 98.16%) !important;
         }
     }
 
     .current {
-        color: #b9b9b9;
     }
 }

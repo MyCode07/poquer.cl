@@ -1,12 +1,16 @@
 .breadcrumbs {
+    margin-top: 0 !important;
     width: 100%;
-
-    @include adaptive-value("margin-bottom", 50, 25, 1);
+    margin-bottom: 25px;
 
     ul {
         display: flex;
         align-items: center;
         flex-wrap: wrap;
+
+        @media (max-width: 768px) {
+            justify-content: center;
+        }
     }
 
     li {
@@ -17,51 +21,120 @@
             color: #9a9a9a;
         }
 
-        font-family: NamuPro;
-        letter-spacing: -0.06em;
-
-        color: #cccccc;
+        span {
+            max-width: 120px;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            color: #cccccc;
+            display: block;
+        }
 
         a {
-            color: #0066ff;
+            span {
+                background: linear-gradient(134deg, #689bff 0%, #2871ff 98.16%);
+                -webkit-background-clip: text;
+                -webkit-text-fill-color: transparent;
+            }
         }
     }
 
     svg {
-        margin: 0 10px;
+        margin: 0 9px;
         display: block;
-        width: 10px;
+        width: 11px;
         flex: 0 0 auto;
     }
 }
 
 .anchors {
+    margin-top: 25px;
+
+    span {
+        text-align: left;
+        display: block;
+    }
+
+    // .anchors-scroll
+
+    &-scroll {
+        @media (max-width: 768px) {
+            overflow-y: auto;
+            width: 100vw;
+            left: 50%;
+            transform: translate(-50%, 0);
+            position: relative;
+
+            &::-webkit-scrollbar {
+                display: none;
+            }
+        }
+    }
+
     ul {
         display: flex;
         align-items: center;
-        gap: 10px;
+        justify-content: flex-start !important;
+        gap: 5px;
+        margin-top: 10px !important;
 
-        @include adaptive-value("margin-top", -30, -20, 1);
-        @include adaptive-value("margin-left", -30, -20, 1);
-        @include adaptive-value("padding", 30, 20, 1);
-
-        overflow-y: auto;
-
-        &::-webkit-scrollbar {
-            display: none;
+        @media (max-width: 768px) {
+            padding-inline: 30px;
+            width: fit-content;
+            flex-wrap: nowrap !important;
         }
     }
 
     li {
-        a {
-            white-space: nowrap;
-            font-family: Namu1960;
-            letter-spacing: -0.06em;
-            text-align: center;
-            padding: 8px 17px;
+        display: block;
+        padding: 0 !important;
 
-            background: #fff;
-            box-shadow: 0px 4px 33px 0px rgba(0, 0, 0, 0.05);
+        @media (max-width: 768px) {
+            flex: 0 0 auto;
+        }
+
+        &:before {
+            display: none;
+        }
+
+        a {
+            display: block;
+            white-space: nowrap;
+            text-align: center;
+
+            background: #f3f3f3;
+            padding: 8px 11px;
+            border-radius: 40px;
+        }
+    }
+}
+
+.table-meta {
+    margin-top: 30px;
+
+    & > :last-child {
+        border-bottom: 1px solid #dbdbdb;
+    }
+
+    div {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+
+        border-top: 1px solid #dbdbdb;
+        padding: 5px 0;
+
+        & > :not(:last-child) {
+            margin-right: 10px;
+        }
+
+        span {
+            text-align: left;
+            color: #cccccc;
+        }
+
+        label {
+            text-align: left;
         }
     }
 }
