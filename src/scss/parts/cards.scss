@@ -52,7 +52,7 @@
         border: 1px solid #ebebeb;
         border-radius: 20px;
         overflow: hidden;
-
+        min-height: 100%;
         padding: 7px;
 
         & > :not(:last-child) {
@@ -91,6 +91,10 @@
             display: inline !important;
             color: #a8a8a8;
         }
+    }
+
+    .bonus {
+        color: #5c93ff;
     }
 }
 
@@ -349,6 +353,7 @@
 
     .bonus {
         text-align: left;
+        color: #5c93ff;
 
         @media (max-width: 600px) {
             text-align: center;
